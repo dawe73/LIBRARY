@@ -1,4 +1,4 @@
-package cz.uhk.mte;
+package cz.uhk.mte.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
