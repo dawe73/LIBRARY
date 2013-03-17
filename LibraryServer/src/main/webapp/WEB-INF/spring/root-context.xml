@@ -5,6 +5,5 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<bean id="communicationService" class="cz.uhk.mte.service.CommunicationServiceImpl" />
 		
 </beans>

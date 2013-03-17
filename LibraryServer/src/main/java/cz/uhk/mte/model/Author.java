@@ -1,19 +1,30 @@
 package cz.uhk.mte.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import java.util.ArrayList;
 
-@Entity
-public class Author {
+import org.joda.time.DateTime;
 
-	@Id
-	@GeneratedValue
-	private int id;
 
-	public int getId() {
-		return id;
+
+/**
+ * @author Lukas
+ * @version 1.0
+ * @created 17-3-2013 20:50:49
+ */
+public class Author extends AbstractDbEntity {
+
+	private DateTime BirthDate;
+	private ArrayList<Book> Books;
+	private String Name;
+	private String Surname;
+	public Book m_Book;
+
+	public Author(){
+
 	}
-	
-	
+
+	public void finalize() throws Throwable {
+		super.finalize();
+	}
+
 }
