@@ -1,7 +1,9 @@
 package cz.uhk.mte.controllers;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -10,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import cz.uhk.mte.model.Pokus;
 
 /**
  * Handles requests for the application home page.
@@ -34,6 +39,15 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
+	}
+	
+	@RequestMapping(value = "/getPokusy")
+	public @ResponseBody List<Pokus> getPokusy() {
+		logger.info("Accessing protected resource");
+		List<Pokus> list = new ArrayList<Pokus>();
+		list.add(new Pokus("Pokus 1"));
+		list.add(new Pokus("Pokus 2"));
+		return list;
 	}
 	
 }
