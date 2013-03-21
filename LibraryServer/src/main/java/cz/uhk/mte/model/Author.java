@@ -1,8 +1,8 @@
 package cz.uhk.mte.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-import org.joda.time.DateTime;
 
 
 
@@ -13,7 +13,7 @@ import org.joda.time.DateTime;
  */
 public class Author extends AbstractDbEntity {
 
-	private DateTime BirthDate;
+	private Date BirthDate;
 	private ArrayList<Book> Books;
 	private String Name;
 	private String Surname;

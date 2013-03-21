@@ -1,6 +1,7 @@
 package cz.uhk.mte.model;
 
-import org.joda.time.DateTime;
+import java.util.Date;
+
 
 /**
  * @author Lukas
@@ -10,8 +11,8 @@ import org.joda.time.DateTime;
 public class Reservation extends AbstractDbEntity {
 
 	private Book Book;
-	private DateTime DateFrom;
-	private DateTime DateTo;
+	private Date DateFrom;
+	private Date DateTo;
 	private boolean IsActive;
 	private String ReserverName;
 	private String ReserverSurname;

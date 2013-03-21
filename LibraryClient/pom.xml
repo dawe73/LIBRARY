@@ -9,8 +9,11 @@
 	<name>LibraryClient</name>
 
 	<properties>
-		<platform.version> 4.0.1.2
-		</platform.version>
+		<platform.version> 4.0.1.2</platform.version>
+		<com.google.android-version>4.1.1.4</com.google.android-version>
+		<!-- Available Android versions: 1.5_r3, 1.5_r4, 1.6_r2, 2.1.2, 2.1_r1, 2.2.1, 2.3.1, 2.3.3, 4.0.1.2, 4.1.1.4 -->
+		<org.springframework.android-version>1.0.1.RELEASE</org.springframework.android-version>
+		<org.codehaus.jackson-version>1.9.11</org.codehaus.jackson-version>
 	</properties>
 
 
@@ -19,23 +22,27 @@
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
-			<version>${platform.version}</version>
+			<version>${com.google.android-version}</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.android</groupId>
 			<artifactId>spring-android-rest-template</artifactId>
-			<version>1.0.1.RELEASE</version>
+			<version>${org.springframework.android-version}</version>
 		</dependency>
 		
-		
+		<!-- Jackson JSON Processor -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${org.codehaus.jackson-version}</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>
 		<repository>
 			<id>springsource-repo</id>
-			<name>SpringSource Repository</name>
+			<name>SpringSpring Repository</name>
 			<url>http://repo.springsource.org/release</url>
 		</repository>
 	</repositories>

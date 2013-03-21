@@ -1,6 +1,7 @@
 package cz.uhk.mte.model;
 
-import org.joda.time.DateTime;
+import java.util.Date;
+
 
 /**
  * @author Lukas
@@ -10,9 +11,9 @@ import org.joda.time.DateTime;
 public class Borrowing extends AbstractDbEntity {
 
 	private Book Book;
-	private DateTime DateFrom;
-	private DateTime DateReceived;
-	private DateTime DateTo;
+	private Date DateFrom;
+	private Date DateReceived;
+	private Date DateTo;
 	private int IsActive;
 	private int Notes;
 	private IStudent Student;

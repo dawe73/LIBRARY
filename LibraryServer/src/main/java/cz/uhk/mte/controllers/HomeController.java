@@ -41,13 +41,19 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/getPokusy")
+	@RequestMapping(value = "/getPokusy", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody List<Pokus> getPokusy() {
 		logger.info("Accessing protected resource");
 		List<Pokus> list = new ArrayList<Pokus>();
 		list.add(new Pokus("Pokus 1"));
 		list.add(new Pokus("Pokus 2"));
 		return list;
+	}
+	
+	@RequestMapping(value = "/getPokus", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody Pokus getPokus() {
+		logger.info("Accessing protected resource");
+		return new Pokus("Pokus 1");
 	}
 	
 }

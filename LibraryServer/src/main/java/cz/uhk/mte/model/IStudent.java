@@ -1,8 +1,8 @@
 package cz.uhk.mte.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-import org.joda.time.DateTime;
 
 /**
  * @author Lukas
@@ -12,7 +12,7 @@ import org.joda.time.DateTime;
 public class IStudent {
 
 	public ArrayList<Borrowing> Borrowings;
-	public  DateTime DateBirth;
+	public  Date DateBirth;
 	/**
 	 * Rodne cislo voe
 	 */
