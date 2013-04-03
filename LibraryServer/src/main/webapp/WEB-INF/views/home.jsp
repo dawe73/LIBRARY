@@ -1,14 +1,13 @@
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
-<%@ page session="false" %>
-<html>
-<head>
-	<title>Home</title>
-</head>
-<body>
-<h1>
-	Hello world!  
-</h1>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+				    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" type="text/css" href="./resources/styles/styles.css" media="screen" />
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<P>  The time on the server is ${serverTime}. </P>
-</body>
-</html>
+<jsp:include page="top.jsp" />
+
+<div class="allContent">
+List knížek
+</div>
+
+<jsp:include page="bottom.jsp" />

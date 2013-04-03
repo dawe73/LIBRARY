@@ -3,26 +3,58 @@ package cz.uhk.mte.model;
 import java.util.Date;
 
 
-/**
- * @author Lukas
- * @version 1.0
- * @created 17-3-2013 20:50:50
- */
 public class Reservation extends AbstractDbEntity {
 
-	private Book Book;
-	private Date DateFrom;
-	private Date DateTo;
-	private boolean IsActive;
-	private String ReserverName;
-	private String ReserverSurname;
+	private Book nook;
+	private Date dateFrom;
+	private Date dateTo;
+	private boolean isActive;
+	private Student student;
 
 	public Reservation(){
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
+	public Book getNook() {
+		return nook;
 	}
+
+	public void setNook(Book nook) {
+		this.nook = nook;
+	}
+
+	public Date getDateFrom() {
+		return dateFrom;
+	}
+
+	public void setDateFrom(Date dateFrom) {
+		this.dateFrom = dateFrom;
+	}
+
+	public Date getDateTo() {
+		return dateTo;
+	}
+
+	public void setDateTo(Date dateTo) {
+		this.dateTo = dateTo;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	
 
 }

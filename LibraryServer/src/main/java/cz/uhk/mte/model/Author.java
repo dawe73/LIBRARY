@@ -4,27 +4,56 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-
-
-/**
- * @author Lukas
- * @version 1.0
- * @created 17-3-2013 20:50:49
- */
 public class Author extends AbstractDbEntity {
 
-	private Date BirthDate;
-	private ArrayList<Book> Books;
-	private String Name;
-	private String Surname;
-	public Book m_Book;
+	private Date birthDate;
+	private ArrayList<Book> books;
+	private String name;
+	private String surname;
 
 	public Author(){
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
+	public Date getBirthDate() {
+		return birthDate;
 	}
 
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public ArrayList<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(ArrayList<Book> books) {
+		this.books = books;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public Author(Date birthDate, String name, String surname) {
+		super();
+		this.birthDate = birthDate;
+		this.name = name;
+		this.surname = surname;
+	}
+	
+	
+	
 }

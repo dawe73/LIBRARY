@@ -9,7 +9,7 @@ import java.util.Date;
  * @version 1.0
  * @created 17-3-2013 20:50:50
  */
-public class IStudent {
+public class Student {
 
 	public ArrayList<Borrowing> Borrowings;
 	public  Date DateBirth;

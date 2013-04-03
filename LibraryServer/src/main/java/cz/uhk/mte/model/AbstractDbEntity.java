@@ -6,9 +6,9 @@ package cz.uhk.mte.model;
  * @version 1.0
  * @created 17-3-2013 20:50:49
  */
-public class AbstractDbEntity extends IEntity {
+public class AbstractDbEntity {
 
-	private int ID;
+	protected int ID;
 
 	public AbstractDbEntity(){
 
@@ -25,5 +25,15 @@ public class AbstractDbEntity extends IEntity {
 	public boolean Update(){
 		return false;
 	}
+
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+	
+	
 
 }
