@@ -6,6 +6,5 @@
 <div class="menuSubpage">
 	<ul>
 		<li><a href="newCategory">New Category</a></li>
-		<li><a href="editCategory">Edit Category</a></li>
 	</ul>
 </div>

@@ -1,15 +1,21 @@
 package cz.uhk.mte.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.validation.constraints.NotNull;
 
-public class Category extends AbstractDbEntity {
+import org.hibernate.validator.constraints.NotEmpty;
+
+
+public class Category extends AbstractDbEntity implements Serializable {
 
 	private ArrayList<Book> books;
 	private String description;
 	private boolean isTopLevelCategory;
 	private int level;
 	private Category parentCategory;
+	@NotEmpty
 	private String title;
 
 	public Category(){

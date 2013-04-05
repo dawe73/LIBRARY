@@ -16,6 +16,7 @@
 		<tr>
 			<td>Title</td>
 			<td><form:input path="title"/></td>
+			<td><form:errors path="title" cssClass="error"/></td>
 		</tr>
 		<tr>
 			<td>Description</td>
@@ -24,10 +25,11 @@
 		<tr>
 			<td>Parent Category</td>
 			<td>
-				<form:select path="parentCategory">
-				<form:options items="${categories}"  itemLabel="title" />
-				</form:select>
-			
+				<select name="categoryID">
+					<c:forEach items="${categories}" var="c">
+						<option value="${c.ID}">${c.title}</option>
+					</c:forEach>
+				</select>
 			</td>
 		</tr>
 		<tr>
