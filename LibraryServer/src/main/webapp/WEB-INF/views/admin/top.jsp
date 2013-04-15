@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css"
-	href="./resources/styles/style.css" media="screen" />
+	href="../resources/styles/style.css" media="screen" />
 <title>Library</title>
 </head>
 
@@ -22,7 +22,7 @@
 					<li><a href="authors">Authors</a></li>
 					<li><a href="reservation">Reservations</a></li>
 					<li><a href="borrowing">Borrowing</a></li>
-					<li><a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
+					<li><a href="<c:url value="admin/j_spring_security_logout" />">Logout</a></li>
 				</ul>
 			</div>
 		</div>

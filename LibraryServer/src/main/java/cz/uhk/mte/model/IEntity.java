@@ -1,9 +1,8 @@
-
 package cz.uhk.mte.model;
 
+public interface IEntity {
 
-public class IEntity {
+	public void update();
 
-	public static int ID;
-
+	public void delete();
 }

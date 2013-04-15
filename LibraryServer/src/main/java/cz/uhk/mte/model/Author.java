@@ -1,14 +1,35 @@
 package cz.uhk.mte.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
-public class Author extends AbstractDbEntity {
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.NotEmpty;
 
+@Entity
+public class Author implements Serializable{
+	@Id
+	@GeneratedValue
+	protected int ID;
+	
 	private Date birthDate;
-	private ArrayList<Book> books;
+	
+	@ManyToMany(mappedBy="authors")
+//	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Book> books;
+	
+	@NotEmpty
 	private String name;
+	
+	@NotEmpty
 	private String surname;
 
 	public Author(){
@@ -23,11 +44,13 @@ public class Author extends AbstractDbEntity {
 		this.birthDate = birthDate;
 	}
 
-	public ArrayList<Book> getBooks() {
+	
+
+	public List<Book> getBooks() {
 		return books;
 	}
 
-	public void setBooks(ArrayList<Book> books) {
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 
@@ -53,7 +76,14 @@ public class Author extends AbstractDbEntity {
 		this.name = name;
 		this.surname = surname;
 	}
-	
-	
+
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
 	
 }

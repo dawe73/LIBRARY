@@ -25,11 +25,7 @@
 	
 	<context:component-scan base-package="cz.uhk.mte" />
 	
-	<!-- na adrese ...//CommunicationService budou zachytávany requesty od clienta 
-	pro rozhrani CommunicationService definovane jako service communicationService-->
-<!-- 	<beans:bean name="/CommunicationService"	class="org.springframework.remoting.caucho.HessianServiceExporter"> -->
-<!-- 		<beans:property name="service" ref="communicationService" /> -->
-<!-- 		<beans:property name="serviceInterface"	value="cz.uhk.mte.service.CommunicationService" /> -->
-<!-- 	</beans:bean> -->
+
+	
 	
 </beans:beans>

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BorrowingController {
 	
-	@RequestMapping(value = "borrowing", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/borrowing", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
 		Date date = new Date();
@@ -22,6 +22,6 @@ public class BorrowingController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "borrowing";
+		return "admin/borrowing";
 	}
 }

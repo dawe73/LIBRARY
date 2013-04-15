@@ -1,27 +1,48 @@
 package cz.uhk.mte.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-public class Reservation extends AbstractDbEntity {
 
-	private Book nook;
+
+@Entity
+public class Reservation implements Serializable {
+	
+	@Id
+	@GeneratedValue
+	protected int ID;
+
+	@ManyToOne
+	private Book book;
 	private Date dateFrom;
 	private Date dateTo;
 	private boolean isActive;
+	
+	@ManyToOne
 	private Student student;
 
 	public Reservation(){
 
 	}
 
-	public Book getNook() {
-		return nook;
+
+	public Book getBook() {
+		return book;
 	}
 
-	public void setNook(Book nook) {
-		this.nook = nook;
+
+
+	public void setBook(Book book) {
+		this.book = book;
 	}
+
+
 
 	public Date getDateFrom() {
 		return dateFrom;
@@ -55,6 +76,17 @@ public class Reservation extends AbstractDbEntity {
 		this.student = student;
 	}
 
+
+	public int getID() {
+		return ID;
+	}
+
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	
 	
 
 }

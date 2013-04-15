@@ -2,18 +2,31 @@ package cz.uhk.mte.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-
-public class Category extends AbstractDbEntity implements Serializable {
-
-	private ArrayList<Book> books;
+@Entity
+public class Category implements Serializable, IEntity {
+	
+	@Id
+	@GeneratedValue
+	protected int ID;
+	
+	@OneToMany(mappedBy="category")
+	private List<Book> books;
+	
 	private String description;
 	private boolean isTopLevelCategory;
 	private int level;
+	
+	@OneToOne
 	private Category parentCategory;
 	@NotEmpty
 	private String title;
@@ -23,6 +36,18 @@ public class Category extends AbstractDbEntity implements Serializable {
 	}
 	
 	
+	
+
+	public Category(String title) {
+		super();
+		this.title = title;
+		this.books = new ArrayList<Book>();
+		this.isTopLevelCategory = false;
+		this.level = 0;
+	}
+
+
+
 
 	public Category(ArrayList<Book> books, String description,
 			boolean isTopLevelCategory, int level, Category parentCategory,
@@ -38,13 +63,18 @@ public class Category extends AbstractDbEntity implements Serializable {
 
 
 
-	public ArrayList<Book> getBooks() {
+
+	public List<Book> getBooks() {
 		return books;
 	}
 
-	public void setBooks(ArrayList<Book> books) {
+
+
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
+
+
 
 	public String getDescription() {
 		return description;
@@ -86,6 +116,35 @@ public class Category extends AbstractDbEntity implements Serializable {
 		this.title = title;
 	}
 
+
+
+	public int getID() {
+		return ID;
+	}
+
+
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 	
 
 }

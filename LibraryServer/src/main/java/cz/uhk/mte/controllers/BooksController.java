@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BooksController {
 	
-	@RequestMapping(value = "books", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/books", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
 		Date date = new Date();
@@ -22,6 +22,6 @@ public class BooksController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "books";
+		return "admin/books";
 	}
 }

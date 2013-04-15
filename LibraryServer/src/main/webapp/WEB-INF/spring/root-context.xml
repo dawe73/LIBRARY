@@ -5,5 +5,18 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+	<!-- bind your messages.properties -->
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource"
+		id="messageSource">
+		<property name="basename" value="messages" />
+	</bean>
 		
+	<bean id="categoryDao" class="cz.uhk.mte.dao.CategoryDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- bean serviceDAO implementovaneho pomoci Hibernate -->
+	<bean id="categoryService" class="cz.uhk.mte.service.impl.CategoryService" >
+		<property name="categoryDao" ref="categoryDao" />
+	</bean>
 </beans>

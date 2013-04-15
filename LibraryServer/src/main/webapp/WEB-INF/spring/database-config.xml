@@ -32,9 +32,6 @@
 		<property name="packagesToScan" value="cz.uhk.mte.model" />
 	</bean>
 
-	<!-- bean serviceDAO implementovaneho pomoci Hibernate -->
-<!-- 	<bean id="futsalService" class="cz.cdfl.futsal.dao.hibernate.HibCdflDAO"> -->
-<!-- 		<property name="sessionFactory" ref="sessionFactory" /> -->
-<!-- 	</bean> -->
+	
 	
 </beans>

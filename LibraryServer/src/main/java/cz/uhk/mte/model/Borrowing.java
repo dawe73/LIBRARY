@@ -1,18 +1,32 @@
 package cz.uhk.mte.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
-public class Borrowing extends AbstractDbEntity {
 
+@Entity
+public class Borrowing implements Serializable {
+
+	@Id
+	@GeneratedValue
+	protected int ID;
+	
+	@ManyToOne
 	private Book book;
 	private Date dateFrom;
 	private Date dateReceived;
 	private Date dateTo;
-	private int isActive;
+	private boolean isActive;
 	private int notes;
-	private Student Student;
+	
+	@ManyToOne
+	private Student student;
 
 	public Borrowing(){
 
@@ -50,13 +64,6 @@ public class Borrowing extends AbstractDbEntity {
 		this.dateTo = dateTo;
 	}
 
-	public int getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(int isActive) {
-		this.isActive = isActive;
-	}
 
 	public int getNotes() {
 		return notes;
@@ -66,13 +73,31 @@ public class Borrowing extends AbstractDbEntity {
 		this.notes = notes;
 	}
 
+
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
 	public Student getStudent() {
-		return Student;
+		return student;
 	}
 
 	public void setStudent(Student student) {
-		Student = student;
+		this.student = student;
 	}
 
+	
 
 }

@@ -1,73 +1,19 @@
 package cz.uhk.mte.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import cz.uhk.mte.model.Category;
 import cz.uhk.mte.model.IEntity;
 
-/**
- * @author Lukas
- * @version 1.0
- * @created 17-3-2013 21:07:18
- */
-public class CategoryService extends AbstractEntityService {
+public interface CategoryService {
 
-	public static CategoryService Instance;
+	public boolean delete(Category category);
 
-	public CategoryService(){
+	public List<Category> getAllCategories();
 
-	}
+	public Category getCategoryByID(int ID);
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+	public void insertCategory(Category category);
 
-	/**
-	 * 
-	 * @param entity
-	 */
-	public boolean Delete(IEntity entity){
-		return false;
-	}
-
-	/**
-	 * taky generika
-	 */
-	public ArrayList<IEntity> getAllEntities(){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param parentID
-	 */
-	public ArrayList<Category> getCategoriesByParentCategoryID(int parentID){
-		return null;
-	}
-
-	/**
-	 * tady pouzijem generiku
-	 * 
-	 * @param ID
-	 */
-	public IEntity GetEntityByID(int ID){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param entity
-	 */
-	public int InsertEntity(IEntity entity){
-		return 0;
-	}
-
-	/**
-	 * 
-	 * @param entity
-	 */
-	public void Update(IEntity entity){
-
-	}
-
+	public void update(Category category);
 }

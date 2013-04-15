@@ -7,8 +7,8 @@
 	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
  
 	<http auto-config="true">
-		<intercept-url pattern="/*" access="ROLE_USER" />
-		<logout logout-success-url="/" />
+		<intercept-url pattern="/admin/*" access="ROLE_USER" />
+		<logout logout-success-url="/admin/" />
 	</http>
  
 	<authentication-manager>
