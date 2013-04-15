@@ -15,6 +15,7 @@
 	<table>
 		<tr>
 			<td>Title</td>
+			<form:hidden path="ID"/>
 			<td><form:input path="title"/></td>
 			<td><form:errors path="title" cssClass="error"/></td>
 		</tr>

@@ -1,17 +1,12 @@
 package cz.uhk.mte.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import cz.uhk.mte.dao.CategoryDaoImpl;
-import cz.uhk.mte.dao.EntityDao;
 import cz.uhk.mte.model.Category;
-import cz.uhk.mte.model.IEntity;
 import cz.uhk.mte.service.CategoryService;
 
 
@@ -21,33 +16,43 @@ public class CategoryServiceImpl implements CategoryService {
 	private CategoryService categoryDao;
 
 	@Override
-	public boolean delete(Category category) {
-		// TODO Auto-generated method stub
-		return false;
+	public void delete(Category category) {
+		categoryDao.delete(category);
 	}
 
 	@Override
 	public List<Category> getAllCategories() {
-		// TODO Auto-generated method stub
-		return null;
+		if (categoryDao.getAllCategories().size() == 0) {
+			Category c = new Category();
+			c.setTitle("UHK");
+			c.setLevel(0);
+			categoryDao.insertCategory(c);
+		}
+		return categoryDao.getAllCategories();
 	}
 
 	@Override
 	public Category getCategoryByID(int ID) {
-		// TODO Auto-generated method stub
-		return null;
+		return categoryDao.getCategoryByID(ID);
 	}
 
 	@Override
 	public void insertCategory(Category category) {
-		// TODO Auto-generated method stub
-		
+		categoryDao.insertCategory(category);
 	}
 
 	@Override
 	public void update(Category category) {
-		// TODO Auto-generated method stub
-		
+		categoryDao.update(category);
 	}
+
+	public CategoryService getCategoryDao() {
+		return categoryDao;
+	}
+
+	public void setCategoryDao(CategoryService categoryDao) {
+		this.categoryDao = categoryDao;
+	}
+	
 	
 }

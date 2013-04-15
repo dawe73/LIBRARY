@@ -7,7 +7,7 @@ import cz.uhk.mte.model.IEntity;
 
 public interface CategoryService {
 
-	public boolean delete(Category category);
+	public void delete(Category category);
 
 	public List<Category> getAllCategories();
 

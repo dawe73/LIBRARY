@@ -16,7 +16,7 @@
 	</bean>
 	
 	<!-- bean serviceDAO implementovaneho pomoci Hibernate -->
-	<bean id="categoryService" class="cz.uhk.mte.service.impl.CategoryService" >
+	<bean id="categoryService" class="cz.uhk.mte.service.impl.CategoryServiceImpl" >
 		<property name="categoryDao" ref="categoryDao" />
 	</bean>
 </beans>
