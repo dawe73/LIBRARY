@@ -1,11 +1,7 @@
 package cz.uhk.mte.controllers;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 import javax.validation.Valid;
 
@@ -19,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cz.uhk.mte.model.Author;
-import cz.uhk.mte.model.Category;
 import cz.uhk.mte.service.AuthorService;
 import cz.uhk.mte.utils.DateConvertor;
 

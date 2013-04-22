@@ -3,6 +3,7 @@ package cz.uhk.mte.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,13 +19,13 @@ public class Reservation implements Serializable {
 	@GeneratedValue
 	protected int ID;
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Book book;
 	private Date dateFrom;
 	private Date dateTo;
 	private boolean isActive;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Student student;
 
 	public Reservation(){

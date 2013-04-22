@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,14 +20,14 @@ public class Category implements Serializable, IEntity {
 	@GeneratedValue
 	protected int ID;
 	
-	@OneToMany(mappedBy="category")
+	@OneToMany(mappedBy="category",cascade=CascadeType.ALL)
 	private List<Book> books;
 	
 	private String description;
 	private boolean isTopLevelCategory;
 	private int level;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Category parentCategory;
 	@NotEmpty
 	private String title;

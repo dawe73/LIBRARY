@@ -40,9 +40,9 @@
 				<td>Author ${num}</td>
 				<td><select name="authorsID[]">
 						<c:forEach items="${authors}" var="a">
-							<option value="${a.ID}">${a.name} ${a.surname}</option>
+							<option value="${a.ID}">${a.name} ${a.surname}</option>	
 						</c:forEach>
-				</select></td>
+					</select></td>
 			</tr>
 		</c:forEach>
 		<tr>

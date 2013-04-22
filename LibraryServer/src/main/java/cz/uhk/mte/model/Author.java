@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Author implements Serializable{
 	
 	private Date birthDate;
 	
-	@ManyToMany(mappedBy="authors")
+	@ManyToMany(mappedBy="authors",cascade=CascadeType.ALL)
 //	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Book> books;
 	

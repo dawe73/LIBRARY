@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,13 +21,13 @@ public class Student implements Serializable{
 	@GeneratedValue
 	protected int ID;
 	
-	@OneToMany(mappedBy="student")
+	@OneToMany(mappedBy="student",cascade=CascadeType.ALL)
 	private List<Borrowing> borrowings;
 	private String name;
 	private String surname;
 	private String mail;
 	
-	@OneToMany(mappedBy="student")
+	@OneToMany(mappedBy="student",cascade=CascadeType.ALL)
 	private List<Reservation> reservations;
 	
 	

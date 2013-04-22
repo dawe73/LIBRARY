@@ -1,10 +1,8 @@
 package cz.uhk.mte.controllers;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 import javax.validation.Valid;
 
@@ -122,7 +120,13 @@ public class BooksController {
 
 	@RequestMapping(value = "admin/book.edit", method = RequestMethod.GET)
 	public String bookEdit(@RequestParam("id") int id, Model model) {
-		model.addAttribute("book",bookService.getBookByID(id));
+		Book book = bookService.getBookByID(id);
+		model.addAttribute("numberOfAuthors",book.getAuthors().size());
+		model.addAttribute("authors",authorService.getAllAuthors());
+		model.addAttribute("book", book);
+		model.addAttribute("categories", categoryService.getAllCategories());
+		model.addAttribute("book",book);
+		model.addAttribute("selectedAuthors",book.getAuthors());
 		model.addAttribute("releasedDate", dateConvertor.dateTOString(bookService.getBookByID(id).getReleased()));
 		return "admin/newBook";
 	}

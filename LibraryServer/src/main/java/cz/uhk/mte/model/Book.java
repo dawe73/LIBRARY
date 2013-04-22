@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,13 +24,13 @@ public class Book implements Serializable {
 	@GeneratedValue
 	protected int ID;
 	
-	@OneToMany(mappedBy="book")
+	@OneToMany(mappedBy="book", cascade=CascadeType.ALL)
 	private List<Reservation> activeReservations;
 	
-	@OneToMany(mappedBy="book")
+	@OneToMany(mappedBy="book",cascade=CascadeType.ALL)
 	private List<Borrowing> borrowings;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Category category;
 	@Min(value = 1)
 	private int count;
@@ -38,7 +39,7 @@ public class Book implements Serializable {
 	@NotEmpty
 	private String keywords;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	public List<Author> authors;
 	
