@@ -13,6 +13,7 @@
 <div class="allContent">
 <form:form action="author.add" commandName="author"  method="POST">
 	<table>
+	<form:hidden path="ID"/>
 		<tr>
 			<td>Name</td>
 			<td><form:input path="name"/></td>
@@ -25,7 +26,7 @@
 		</tr>
 		<tr>
 			<td>Birthday</td>
-			<td><input name="birthDay" type="text"/></td>
+			<td><input name="birthDay" type="text" value="${birthDay}"/></td>
 <%-- 			<td><form:input path="birthDate"/></td> --%>
 		</tr>
 		<tr>

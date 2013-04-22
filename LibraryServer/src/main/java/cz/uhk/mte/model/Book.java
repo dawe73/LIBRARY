@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -28,25 +29,24 @@ public class Book implements Serializable {
 	@OneToMany(mappedBy="book")
 	private List<Borrowing> borrowings;
 	
-	//pokud jde knížka z actvie reserv do active borrwin  pøidá se podle isActive popø se zase odebere
-//	@Transient
-//	private List<Borrowing> activeBorrowings;
-	
 	@ManyToOne
 	private Category category;
-	
+	@Min(value = 1)
 	private int count;
+	@NotEmpty
 	private String ISBN;
+	@NotEmpty
 	private String keywords;
-	private int mainAuthors;
-	private int secondaryAuthors;
 	
 	@ManyToMany
 	@LazyCollection(LazyCollectionOption.FALSE)
 	public List<Author> authors;
 	
+	@Min(value = 1)
 	private int pageCount;
+	
 	private String printerInfo;
+	
 	private Date released;
 	@NotEmpty
 	private String title;
@@ -124,26 +124,6 @@ public class Book implements Serializable {
 
 	public void setKeywords(String keywords) {
 		this.keywords = keywords;
-	}
-
-
-	public int getMainAuthors() {
-		return mainAuthors;
-	}
-
-
-	public void setMainAuthors(int mainAuthors) {
-		this.mainAuthors = mainAuthors;
-	}
-
-
-	public int getSecondaryAuthors() {
-		return secondaryAuthors;
-	}
-
-
-	public void setSecondaryAuthors(int secondaryAuthors) {
-		this.secondaryAuthors = secondaryAuthors;
 	}
 
 

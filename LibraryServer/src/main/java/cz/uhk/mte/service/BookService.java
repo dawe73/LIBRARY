@@ -15,7 +15,7 @@ public interface BookService {
 
 	public Book getBookByID(int ID);
 
-	public void insertBooks(Book book);
+	public void insertBook(Book book);
 
 	public void update(Book book);
 }

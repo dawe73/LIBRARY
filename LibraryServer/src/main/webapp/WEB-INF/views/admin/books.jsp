@@ -9,7 +9,34 @@
 
 
 <div class="allContent">
-List knížek
+<table>
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>ISBN</th>
+		</tr>
+	
+	<c:forEach var="b" items="${books}">
+		<tr>
+			<td>
+				<a href="book.info?id=${b.ID}">${b.title}</a>
+			</td>
+			<td>
+			<c:forEach items="${b.authors}" var="a">
+				${a.name} ${a.surname}, 
+			</c:forEach>
+			</td>
+			<td>
+				${b.ISBN}
+			</td>
+			<td>
+			<a href="book.edit?id=${b.ID}"><input type="button" value="Edit" name="edit" /></a>
+			<a href="book.delete?id=${b.ID}"><input type="button" value="Delete" name="delete"/></a>
+			</td>
+		</tr>
+	</c:forEach>
+	</table>
+</div>
 </div>
 
 <jsp:include page="bottom.jsp" />

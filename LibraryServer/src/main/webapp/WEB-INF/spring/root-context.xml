@@ -15,8 +15,27 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
-	<!-- bean serviceDAO implementovaneho pomoci Hibernate -->
 	<bean id="categoryService" class="cz.uhk.mte.service.impl.CategoryServiceImpl" >
 		<property name="categoryDao" ref="categoryDao" />
 	</bean>
+	
+	<bean id="authorDao" class="cz.uhk.mte.dao.AuthorDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="authorService" class="cz.uhk.mte.service.impl.AuthorServiceImpl" >
+		<property name="authorDao" ref="authorDao" />
+	</bean>
+	
+	<bean id="bookDao" class="cz.uhk.mte.dao.BookDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="bookService" class="cz.uhk.mte.service.impl.BookServiceImpl" >
+		<property name="bookDao" ref="bookDao" />
+	</bean>
+	
+	<bean id="dateConvertor" class="cz.uhk.mte.utils.DateConvertorImpl" />
+	
+	
 </beans>
