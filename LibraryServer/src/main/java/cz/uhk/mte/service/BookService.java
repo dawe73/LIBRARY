@@ -18,4 +18,7 @@ public interface BookService {
 	public void insertBook(Book book);
 
 	public void update(Book book);
+	
+	public List<Book> getBooksByCategory(Category category);
+	
 }

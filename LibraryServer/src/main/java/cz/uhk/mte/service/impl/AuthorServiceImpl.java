@@ -1,5 +1,6 @@
 package cz.uhk.mte.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class AuthorServiceImpl implements AuthorService {
 	public void setAuthorDao(AuthorService authorDao) {
 		this.authorDao = authorDao;
 	}
+
 
 	
 

@@ -23,7 +23,7 @@
 				<a href="category.info?id=${c.ID}">${c.title}</a>
 			</td>
 			<td>${c.level}</td>
-			<td>${c.parentCategory.title}</td>
+			<td><a href="category.info?id=${c.parentCategory.ID}">${c.parentCategory.title}</a></td>
 			<td>${c.description}</td>
 			<td>
 			<a href="category.edit?id=${c.ID}"><input type="button" value="Edit" name="edit" /></a>

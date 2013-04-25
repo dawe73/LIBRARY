@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cz.uhk.mte.model.Category;
+import cz.uhk.mte.service.BookService;
 import cz.uhk.mte.service.CategoryService;
 
 
@@ -22,6 +23,9 @@ import cz.uhk.mte.service.CategoryService;
 public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private BookService bookService;
 	
 	
 	@RequestMapping(value = "admin/category", method = RequestMethod.GET)
@@ -59,7 +63,9 @@ public class CategoryController {
 	
 	@RequestMapping(value = "admin/category.info", method = RequestMethod.GET)
     public String categoryInfo(@RequestParam("id") int id, Model model) {
-        	model.addAttribute("category", categoryService.getCategoryByID(id));
+			Category c = categoryService.getCategoryByID(id);
+        	model.addAttribute("category", c);
+        	model.addAttribute("books", bookService.getBooksByCategory(c));
         	return "/admin/categoryInfo";
     }
 	

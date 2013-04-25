@@ -1,0 +1,39 @@
+package cz.uhk.mte.dao;
+
+import java.util.List;
+
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import cz.uhk.mte.model.Category;
+import cz.uhk.mte.model.Reservation;
+import cz.uhk.mte.service.ReservationService;
+
+public class ReservationDao extends HibernateDaoSupport implements ReservationService {
+
+	@Override
+	public void delete(Reservation reservation) {
+		getHibernateTemplate().delete(reservation);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Reservation> getAllReservations() {
+		return getHibernateTemplate().find("from Reservation");
+	}
+
+	@Override
+	public Reservation getReservationByID(int ID) {
+		return (Reservation) getHibernateTemplate().get(Reservation.class, ID);
+	}
+
+	@Override
+	public void insertReservation(Reservation reservation) {
+		getHibernateTemplate().saveOrUpdate(reservation);
+	}
+
+	@Override
+	public void update(Reservation reservation) {
+		insertReservation(reservation);		
+	}
+
+}

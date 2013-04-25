@@ -24,7 +24,7 @@ public class Author implements Serializable{
 	private Date birthDate;
 	
 	@ManyToMany(mappedBy="authors",cascade=CascadeType.ALL)
-//	@LazyCollection(LazyCollectionOption.FALSE)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Book> books;
 	
 	@NotEmpty

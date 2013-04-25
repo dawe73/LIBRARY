@@ -22,7 +22,7 @@
 					<li><a href="authors">Authors</a></li>
 					<li><a href="reservation">Reservations</a></li>
 					<li><a href="borrowing">Borrowing</a></li>
-					<li><a href="<c:url value="admin/j_spring_security_logout" />">Logout</a></li>
+					<li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
 				</ul>
 			</div>
 		</div>

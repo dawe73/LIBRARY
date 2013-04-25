@@ -24,7 +24,6 @@ public class Borrowing implements Serializable {
 	private Date dateReceived;
 	private Date dateTo;
 	private boolean isActive;
-	private int notes;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Student student;
@@ -33,6 +32,14 @@ public class Borrowing implements Serializable {
 
 	}
 
+	public Borrowing(Reservation reservation) {
+		this.book = reservation.getBook();
+		this.dateFrom = reservation.getDateFrom();
+		this.dateTo = reservation.getDateTo();
+		this.isActive = true;
+		
+	}
+	
 	public Book getBook() {
 		return book;
 	}
@@ -63,15 +70,6 @@ public class Borrowing implements Serializable {
 
 	public void setDateTo(Date dateTo) {
 		this.dateTo = dateTo;
-	}
-
-
-	public int getNotes() {
-		return notes;
-	}
-
-	public void setNotes(int notes) {
-		this.notes = notes;
 	}
 
 

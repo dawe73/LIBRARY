@@ -1,6 +1,7 @@
 package cz.uhk.mte.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class Book implements Serializable {
 	
 
 	public Book(){
-
+		authors = new ArrayList<Author>();
 	}
 
 

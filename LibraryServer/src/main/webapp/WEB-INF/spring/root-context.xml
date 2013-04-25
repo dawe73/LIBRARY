@@ -35,6 +35,26 @@
 		<property name="bookDao" ref="bookDao" />
 	</bean>
 	
+	<bean id="reservationDao" class="cz.uhk.mte.dao.ReservationDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="reservationService" class="cz.uhk.mte.service.impl.ReservationServiceImpl" >
+		<property name="reservationDao" ref="reservationDao" />
+	</bean>
+	
+	<bean id="borrowingDao" class="cz.uhk.mte.dao.BorrowingDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="borrowingService" class="cz.uhk.mte.service.impl.BorrowingServiceImpl" >
+		<property name="borrowingDao" ref="borrowingDao" />
+	</bean>
+	
+	<bean id="searchService" class="cz.uhk.mte.utils.SearchServiceImpl" >
+		<property name="bookDao" ref="bookDao" />
+	</bean>
+	
 	<bean id="dateConvertor" class="cz.uhk.mte.utils.DateConvertorImpl" />
 	
 	

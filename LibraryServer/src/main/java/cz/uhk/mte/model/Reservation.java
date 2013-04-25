@@ -23,7 +23,6 @@ public class Reservation implements Serializable {
 	private Book book;
 	private Date dateFrom;
 	private Date dateTo;
-	private boolean isActive;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Student student;
@@ -59,14 +58,6 @@ public class Reservation implements Serializable {
 
 	public void setDateTo(Date dateTo) {
 		this.dateTo = dateTo;
-	}
-
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
 	}
 
 	public Student getStudent() {

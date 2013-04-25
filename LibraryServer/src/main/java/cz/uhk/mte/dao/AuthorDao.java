@@ -37,4 +37,5 @@ public class AuthorDao extends HibernateDaoSupport implements AuthorService {
 		insertAuthor(author);
 	}
 
+
 }

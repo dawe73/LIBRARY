@@ -16,7 +16,7 @@ public interface ReservationService {
 
 	public Reservation getReservationByID(int ID);
 
-	public void insertBooks(Reservation reservation);
+	public void insertReservation(Reservation reservation);
 
 	public void update(Reservation reservation);
 }

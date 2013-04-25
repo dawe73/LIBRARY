@@ -12,17 +12,15 @@
 <div class="allContent">
 	<table>
 		<tr>
-			<th>Name</th>
-			<th>Surname</th>
+			<th>Name and surname</th>
 			<th>Birthday</th>
 		</tr>
 	
 	<c:forEach var="a" items="${authors}">
 		<tr>
 			<td>
-				<a href="author.info?id=${a.ID}">${a.name}</a>
+				<a href="author.info?id=${a.ID}">${a.name} ${a.surname}</a>	
 			</td>
-			<td>${a.surname}</td>
 			<td>
 				<fmt:formatDate var="date" pattern="dd.MM.yy" value="${a.birthDate}"/>${date}
 			</td>

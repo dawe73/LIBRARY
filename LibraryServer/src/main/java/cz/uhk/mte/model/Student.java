@@ -30,7 +30,7 @@ public class Student implements Serializable{
 	@OneToMany(mappedBy="student",cascade=CascadeType.ALL)
 	private List<Reservation> reservations;
 	
-	
+	@OneToMany(mappedBy="student",cascade=CascadeType.ALL)
 	public void setBorrowings(ArrayList<Borrowing> borrowings) {
 		this.borrowings = borrowings;
 	}

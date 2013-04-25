@@ -35,12 +35,16 @@
 			<td><form:input path="count"/></td>
 			<td><form:errors path="count" cssClass="error"/></td>
 		</tr>
-		<c:forEach var="num" begin="1" end="${numberOfAuthors}">
+		<c:forEach var="num" begin="0" end="${numberOfAuthors-1}">
 			<tr>
 				<td>Author ${num}</td>
 				<td><select name="authorsID[]">
 						<c:forEach items="${authors}" var="a">
-							<option value="${a.ID}">${a.name} ${a.surname}</option>	
+						<option
+						<c:if test="${a.ID ==  selectedAuthors[num].ID }">
+							 selected="selected" 
+						</c:if>
+						value="${a.ID}">${a.name} ${a.surname}</option>	
 						</c:forEach>
 					</select></td>
 			</tr>

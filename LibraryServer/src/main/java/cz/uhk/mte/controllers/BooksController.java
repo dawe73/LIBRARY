@@ -3,6 +3,7 @@ package cz.uhk.mte.controllers;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -60,6 +61,15 @@ public class BooksController {
 			@RequestParam("authorsID[]")int[] authorsID,
 			@RequestParam("action") String action,
 			Model model) {
+//		Book oldBook = bookService.getBookByID(book.getID());	
+		List<Author> listOfAuthor = new ArrayList<Author>();
+//		book.setAuthors(new ArrayList<Author>());
+//		for (int i : authorsID) {
+//			book.getAuthors().add(authorService.getAuthorByID(i));
+//		}
+		for (int i : authorsID) {
+			listOfAuthor.add(authorService.getAuthorByID(i));
+		}
 		if (action.equals("Add book")) {
 			Date date;
 			try {
@@ -81,12 +91,19 @@ public class BooksController {
 				model.addAttribute("authors",authorService.getAllAuthors());
 				return "admin/newBook";
 			} else {
-				book.setAuthors(new ArrayList<Author>());
-				for (int i : authorsID) {
-					book.getAuthors().add(authorService.getAuthorByID(i));
-				}
 				book.setReleased(date);
 				book.setCategory(categoryService.getCategoryByID(categoryID));
+//				if (oldBook != null) {
+//					for (Author a : oldBook.getAuthors()) {
+//						a.getBooks().remove(oldBook);
+//						authorService.insertAuthor(a);
+//					}
+//				}
+				for (Author author : listOfAuthor) {
+					author.getBooks().remove(author);
+					authorService.insertAuthor(author);
+				}
+				book.setAuthors(listOfAuthor);
 				bookService.insertBook(book);
 				return "redirect:/admin/books";
 			}
@@ -96,6 +113,7 @@ public class BooksController {
 			model.addAttribute("book", book);
 			model.addAttribute("categories", categoryService.getAllCategories());
 			model.addAttribute("releasedDate", releasedDate);
+			model.addAttribute("selectedAuthors",listOfAuthor);
 			return "admin/newBook";
 		} else if (action.equals("Remove last")){
 			if (authorsID.length > 1) {
@@ -107,6 +125,7 @@ public class BooksController {
 			model.addAttribute("book", book);
 			model.addAttribute("categories", categoryService.getAllCategories());
 			model.addAttribute("releasedDate", releasedDate);
+			model.addAttribute("selectedAuthors",listOfAuthor);
 			return "admin/newBook";
 		}
 		return "redirect:/admin/books";
@@ -125,7 +144,6 @@ public class BooksController {
 		model.addAttribute("authors",authorService.getAllAuthors());
 		model.addAttribute("book", book);
 		model.addAttribute("categories", categoryService.getAllCategories());
-		model.addAttribute("book",book);
 		model.addAttribute("selectedAuthors",book.getAuthors());
 		model.addAttribute("releasedDate", dateConvertor.dateTOString(bookService.getBookByID(id).getReleased()));
 		return "admin/newBook";

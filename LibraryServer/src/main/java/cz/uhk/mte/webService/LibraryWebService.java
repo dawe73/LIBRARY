@@ -1,17 +1,18 @@
 package cz.uhk.mte.webService;
 
-import java.util.List;
-
-import cz.uhk.mte.model.Book;
-import cz.uhk.mte.model.Reservation;
+import java.util.ArrayList;
+import java.util.Date;
 
 
 public interface LibraryWebService {
 
-	public Book getBookByID(int ID);
 
-	public Reservation reserveBook(String surname, String name, int bookID);
+ public ArrayList<CategoryAndroid> getCategoriesByParentCategoryID(int parentCategoryID);
+ public ArrayList<CategoryAndroid> getCategoriesBySearchExpression(String searchExpression);
 
-	public List<Book> searchBooks(String title);
+ public BookAndroid getBookByID(int bookID);
+ public ArrayList<BookAndroid> getBooksByCategoryID(int categoryID);
+ public ArrayList<BookAndroid> getBooksBySearchExpression(String searchExpression);
 
+ public int InsertReservation(int bookID, String name, String surname, String date);
 }
