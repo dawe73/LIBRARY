@@ -5,11 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cz.uhk.mte.model.Borrowing;
+import cz.uhk.mte.model.Student;
 import cz.uhk.mte.service.BorrowingService;
+import cz.uhk.mte.service.StudentService;
 
 public class BorrowingServiceImpl implements BorrowingService {
 	@Autowired
 	private BorrowingService borrowingDao;
+	
+	@Autowired
+	private StudentService studentService;
 
 	@Override
 	public void delete(Borrowing borrowing) {
@@ -28,6 +33,9 @@ public class BorrowingServiceImpl implements BorrowingService {
 
 	@Override
 	public void insertBorrowing(Borrowing borrowing) {
+		Student s = borrowing.getStudent();
+		s.getBorrowings().add(borrowing);
+		studentService.insertStudent(s);
 		borrowingDao.insertBorrowing(borrowing);
 	}
 
@@ -44,5 +52,14 @@ public class BorrowingServiceImpl implements BorrowingService {
 		this.borrowingDao = borrowingDao;
 	}
 
+	public StudentService getStudentService() {
+		return studentService;
+	}
+
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
+	}
+
+	
 	
 }

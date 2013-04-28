@@ -53,6 +53,16 @@ public class CategoryServiceImpl implements CategoryService {
 	public void setCategoryDao(CategoryService categoryDao) {
 		this.categoryDao = categoryDao;
 	}
+
+	@Override
+	public List<Category> getByParentCategory(Category parent) {
+		return categoryDao.getByParentCategory(parent);
+	}
+
+	@Override
+	public List<Category> getCategoriesBySearchExpression(String search) {
+		return categoryDao.getCategoriesBySearchExpression(search);
+	}
 	
 	
 }

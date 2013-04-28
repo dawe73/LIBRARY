@@ -6,15 +6,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cz.uhk.mte.model.Author;
+import cz.uhk.mte.model.Book;
 import cz.uhk.mte.service.AuthorService;
+import cz.uhk.mte.service.BookService;
 import cz.uhk.mte.service.CategoryService;
 
 public class AuthorServiceImpl implements AuthorService {
 	@Autowired
 	private AuthorService authorDao;
 	
+	@Autowired
+	private BookService bookService;
+	
 	@Override
 	public void delete(Author author) {
+		for (Book book : author.getBooks()) {
+			book.getAuthors().remove(author);
+			bookService.update(book);
+		}
 		authorDao.delete(author);
 	}
 
@@ -48,7 +57,16 @@ public class AuthorServiceImpl implements AuthorService {
 		this.authorDao = authorDao;
 	}
 
+	public BookService getBookService() {
+		return bookService;
+	}
 
+	public void setBookService(BookService bookService) {
+		this.bookService = bookService;
+	}
+
+
+	
 	
 
 	

@@ -25,6 +25,7 @@
 	
 	<bean id="authorService" class="cz.uhk.mte.service.impl.AuthorServiceImpl" >
 		<property name="authorDao" ref="authorDao" />
+		<property name="bookService" ref="bookService" />
 	</bean>
 	
 	<bean id="bookDao" class="cz.uhk.mte.dao.BookDao">
@@ -33,6 +34,8 @@
 	
 	<bean id="bookService" class="cz.uhk.mte.service.impl.BookServiceImpl" >
 		<property name="bookDao" ref="bookDao" />
+		<property name="authorService" ref="authorService" />
+		<property name="categoryService" ref="categoryService" />
 	</bean>
 	
 	<bean id="reservationDao" class="cz.uhk.mte.dao.ReservationDao">
@@ -41,6 +44,7 @@
 	
 	<bean id="reservationService" class="cz.uhk.mte.service.impl.ReservationServiceImpl" >
 		<property name="reservationDao" ref="reservationDao" />
+		<property name="studentService" ref="studentService" />
 	</bean>
 	
 	<bean id="borrowingDao" class="cz.uhk.mte.dao.BorrowingDao">
@@ -49,13 +53,27 @@
 	
 	<bean id="borrowingService" class="cz.uhk.mte.service.impl.BorrowingServiceImpl" >
 		<property name="borrowingDao" ref="borrowingDao" />
-	</bean>
-	
-	<bean id="searchService" class="cz.uhk.mte.utils.SearchServiceImpl" >
-		<property name="bookDao" ref="bookDao" />
+		<property name="studentService" ref="studentService" />
 	</bean>
 	
 	<bean id="dateConvertor" class="cz.uhk.mte.utils.DateConvertorImpl" />
+	
+	<bean id="studentDao" class="cz.uhk.mte.dao.StudentDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="studentService" class="cz.uhk.mte.service.impl.StudenServiceImpl" >
+		<property name="studentDao" ref="studentDao" />
+	</bean>
+	
+	
+	
+	<bean id="convertor" class="cz.uhk.mte.service.android.impl.ConvertorToAndroidModelImpl" >
+	    <property name="bookService" ref="bookService" />
+	    <property name="reservationService" ref="reservationService" />
+	    <property name="studentService" ref="studentService" />
+	    <property name="categoryService" ref="categoryService" />
+	</bean>
 	
 	
 </beans>

@@ -2,10 +2,8 @@ package cz.uhk.mte.service;
 
 import java.util.List;
 
-import cz.uhk.mte.model.Author;
 import cz.uhk.mte.model.Book;
 import cz.uhk.mte.model.Category;
-import cz.uhk.mte.model.IEntity;
 
 public interface BookService {
 
@@ -20,5 +18,7 @@ public interface BookService {
 	public void update(Book book);
 	
 	public List<Book> getBooksByCategory(Category category);
+	
+	public List<Book> getBooksBySearchExpression(String searchExpression);
 	
 }

@@ -19,4 +19,6 @@ public interface ReservationService {
 	public void insertReservation(Reservation reservation);
 
 	public void update(Reservation reservation);
+	
+	public int getLastInsertedID(Reservation reservation);
 }

@@ -18,7 +18,8 @@ public class ReservationDao extends HibernateDaoSupport implements ReservationSe
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Reservation> getAllReservations() {
-		return getHibernateTemplate().find("from Reservation");
+		boolean active = false;
+		return getHibernateTemplate().find("from Reservation r where r.isActive=?",active);
 	}
 
 	@Override
@@ -34,6 +35,14 @@ public class ReservationDao extends HibernateDaoSupport implements ReservationSe
 	@Override
 	public void update(Reservation reservation) {
 		insertReservation(reservation);		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public int getLastInsertedID(Reservation reservation) {
+		List<Reservation> r = getHibernateTemplate().find("from Reservation r where r.dateFrom=? and r.dateTo=? and r.student=?",
+				reservation.getDateFrom(),reservation.getDateTo(),reservation.getStudent());
+		return r.get(0).getID();
 	}
 
 }

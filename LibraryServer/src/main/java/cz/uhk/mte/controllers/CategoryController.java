@@ -27,6 +27,12 @@ public class CategoryController {
 	@Autowired
 	private BookService bookService;
 	
+	@RequestMapping(value = "admin/", method = RequestMethod.GET)
+	public String sign(Model model) {
+    	model.addAttribute("categories", categoryService.getAllCategories());
+    	return "admin/category";
+	}
+	
 	
 	@RequestMapping(value = "admin/category", method = RequestMethod.GET)
 	public String home(Model model) {
@@ -86,8 +92,10 @@ public class CategoryController {
 	
 	@RequestMapping(value = "admin/category.delete", method = RequestMethod.GET)
     public String categoryDelete(@RequestParam("id") int id, Model model) {
+		if (categoryService.getByParentCategory(categoryService.getCategoryByID(id)).size() < 1) {
 			categoryService.delete(categoryService.getCategoryByID(id));
-        	return "redirect:/admin/category";
+		}
+        return "redirect:/admin/category";
     }
 	
 }

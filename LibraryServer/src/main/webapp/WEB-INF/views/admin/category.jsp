@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" type="text/css" href="../resources/styles/styles.css" media="screen" />
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"
+    prefix="fn" %>
 
 <jsp:include page="top.jsp" />
 <jsp:include page="topCategory.jsp" />
@@ -27,7 +29,10 @@
 			<td>${c.description}</td>
 			<td>
 			<a href="category.edit?id=${c.ID}"><input type="button" value="Edit" name="edit" /></a>
-			<a href="category.delete?id=${c.ID}"><input type="button" value="Delete" name="delete"/></a>
+			<c:if test="${fn:length(c.books) < 1}">
+				<a href="category.delete?id=${c.ID}"><input type="button" value="Delete" name="delete"/>
+			</c:if>
+			</a>
 			</td>
 		</tr>
 	</c:forEach>

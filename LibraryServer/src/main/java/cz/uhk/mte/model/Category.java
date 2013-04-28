@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -20,20 +22,21 @@ public class Category implements Serializable, IEntity {
 	@GeneratedValue
 	protected int ID;
 	
-	@OneToMany(mappedBy="category",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="category")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Book> books;
 	
 	private String description;
 	private boolean isTopLevelCategory;
 	private int level;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne()
 	private Category parentCategory;
 	@NotEmpty
 	private String title;
 
 	public Category(){
-		
+		this.books = new ArrayList<Book>();
 	}
 	
 	

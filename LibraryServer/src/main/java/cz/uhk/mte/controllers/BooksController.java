@@ -61,12 +61,7 @@ public class BooksController {
 			@RequestParam("authorsID[]")int[] authorsID,
 			@RequestParam("action") String action,
 			Model model) {
-//		Book oldBook = bookService.getBookByID(book.getID());	
 		List<Author> listOfAuthor = new ArrayList<Author>();
-//		book.setAuthors(new ArrayList<Author>());
-//		for (int i : authorsID) {
-//			book.getAuthors().add(authorService.getAuthorByID(i));
-//		}
 		for (int i : authorsID) {
 			listOfAuthor.add(authorService.getAuthorByID(i));
 		}
@@ -93,17 +88,12 @@ public class BooksController {
 			} else {
 				book.setReleased(date);
 				book.setCategory(categoryService.getCategoryByID(categoryID));
-//				if (oldBook != null) {
-//					for (Author a : oldBook.getAuthors()) {
-//						a.getBooks().remove(oldBook);
-//						authorService.insertAuthor(a);
-//					}
-//				}
 				for (Author author : listOfAuthor) {
-					author.getBooks().remove(author);
+					author.getBooks().remove(book);
 					authorService.insertAuthor(author);
 				}
 				book.setAuthors(listOfAuthor);
+				book.setAvailableCount(book.getCount());
 				bookService.insertBook(book);
 				return "redirect:/admin/books";
 			}

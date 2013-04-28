@@ -56,11 +56,11 @@
 		</tr>
 		<tr>
 			<th>Available</th>
-			<td>počet dostupných</td>
+			<td>${book.availableCount}</td>
 		</tr>
 		<tr>
-			<th>Borrwed</th>
-			<td>počet pujčených</td>
+			<th>Borrowed</th>
+			<td>${book.count-book.availableCount}</td>
 		</tr>
 	</table>
 		<a href="book.edit?id=${book.ID}"><input type="button" value="Edit" name="edit" /></a>

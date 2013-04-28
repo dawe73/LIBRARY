@@ -25,13 +25,13 @@ public class Book implements Serializable {
 	@GeneratedValue
 	protected int ID;
 	
-	@OneToMany(mappedBy="book", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="book")
 	private List<Reservation> activeReservations;
 	
-	@OneToMany(mappedBy="book",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="book")
 	private List<Borrowing> borrowings;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne()
 	private Category category;
 	@Min(value = 1)
 	private int count;
@@ -40,7 +40,7 @@ public class Book implements Serializable {
 	@NotEmpty
 	private String keywords;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany()
 	@LazyCollection(LazyCollectionOption.FALSE)
 	public List<Author> authors;
 	
@@ -53,9 +53,12 @@ public class Book implements Serializable {
 	@NotEmpty
 	private String title;
 	
+	private int availableCount;
 
 	public Book(){
 		authors = new ArrayList<Author>();
+		activeReservations = new ArrayList<Reservation>();
+		borrowings = new ArrayList<Borrowing>();
 	}
 
 
@@ -177,6 +180,16 @@ public class Book implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+
+	public int getAvailableCount() {
+		return availableCount;
+	}
+
+
+	public void setAvailableCount(int availableCount) {
+		this.availableCount = availableCount;
 	}
 
 

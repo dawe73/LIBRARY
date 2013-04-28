@@ -35,7 +35,9 @@
 			<td><form:input path="count"/></td>
 			<td><form:errors path="count" cssClass="error"/></td>
 		</tr>
-		<c:forEach var="num" begin="0" end="${numberOfAuthors-1}">
+		<c:set var="endCycle"  value="${numberOfAuthors-1}"/>
+		<c:if test="${numberOfAuthors==0 }"><c:set var="endCycle"  value="0"/></c:if>
+		<c:forEach var="num" begin="0" end="${endCycle}">
 			<tr>
 				<td>Author ${num}</td>
 				<td><select name="authorsID[]">

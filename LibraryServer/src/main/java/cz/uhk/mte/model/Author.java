@@ -23,7 +23,7 @@ public class Author implements Serializable{
 	
 	private Date birthDate;
 	
-	@ManyToMany(mappedBy="authors",cascade=CascadeType.ALL)
+	@ManyToMany(mappedBy="authors")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Book> books;
 	
@@ -34,7 +34,7 @@ public class Author implements Serializable{
 	private String surname;
 
 	public Author(){
-
+		this.books = new ArrayList<Book>();
 	}
 
 	public Date getBirthDate() {

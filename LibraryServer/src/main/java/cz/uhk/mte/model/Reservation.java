@@ -19,12 +19,13 @@ public class Reservation implements Serializable {
 	@GeneratedValue
 	protected int ID;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne()
 	private Book book;
 	private Date dateFrom;
 	private Date dateTo;
+	private boolean isActive;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne()
 	private Student student;
 
 	public Reservation(){
@@ -76,6 +77,16 @@ public class Reservation implements Serializable {
 
 	public void setID(int iD) {
 		ID = iD;
+	}
+
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	

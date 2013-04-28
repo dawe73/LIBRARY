@@ -9,6 +9,7 @@ import cz.uhk.mte.model.Book;
 import cz.uhk.mte.model.Category;
 import cz.uhk.mte.service.AuthorService;
 import cz.uhk.mte.service.BookService;
+import cz.uhk.mte.service.CategoryService;
 
 public class BookServiceImpl implements BookService {
 
@@ -18,8 +19,18 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	AuthorService authorService;
 	
+	@Autowired
+	CategoryService categoryService;
+	
 	@Override
 	public void delete(Book book) {
+		Category c = book.getCategory();
+		c.getBooks().remove(book);
+		categoryService.update(c);
+		for (Author a : book.getAuthors()) {
+			a.getBooks().remove(book);
+			authorService.update(a);
+		}
 		bookDao.delete(book);
 	}
 
@@ -36,10 +47,13 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void insertBook(Book book) {
 		bookDao.insertBook(book);
-//		for (Author a : book.getAuthors()) {
-//			a.getBooks().add(book);
-//			authorService.insertAuthor(a);
-//		}
+		Category c = book.getCategory();
+		c.getBooks().add(book);
+		categoryService.update(c);
+		for (Author a : book.getAuthors()) {
+			a.getBooks().add(book);
+			authorService.insertAuthor(a);
+		}
 	}
 
 	@Override
@@ -61,5 +75,27 @@ public class BookServiceImpl implements BookService {
 		return bookDao.getBooksByCategory(category);
 	}
 
+	@Override
+	public List<Book> getBooksBySearchExpression(String searchExpression) {
+		return bookDao.getBooksBySearchExpression(searchExpression);
+	}
+
+	public AuthorService getAuthorService() {
+		return authorService;
+	}
+
+	public void setAuthorService(AuthorService authorService) {
+		this.authorService = authorService;
+	}
+
+	public CategoryService getCategoryService() {
+		return categoryService;
+	}
+
+	public void setCategoryService(CategoryService categoryService) {
+		this.categoryService = categoryService;
+	}
+
+	
 	
 }

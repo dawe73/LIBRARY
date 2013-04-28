@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 
 
 @Entity
@@ -21,18 +24,25 @@ public class Student implements Serializable{
 	@GeneratedValue
 	protected int ID;
 	
-	@OneToMany(mappedBy="student",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="student")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Borrowing> borrowings;
 	private String name;
 	private String surname;
 	private String mail;
 	
-	@OneToMany(mappedBy="student",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="student")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Reservation> reservations;
 	
-	@OneToMany(mappedBy="student",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="student")
 	public void setBorrowings(ArrayList<Borrowing> borrowings) {
 		this.borrowings = borrowings;
+	}
+	
+	public Student() {
+		this.reservations = new ArrayList<Reservation>();
+		this.borrowings = new ArrayList<Borrowing>();
 	}
 	public String getName() {
 		return name;

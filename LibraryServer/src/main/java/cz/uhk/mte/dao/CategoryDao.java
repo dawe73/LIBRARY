@@ -36,6 +36,19 @@ public class CategoryDao extends HibernateDaoSupport implements CategoryService 
 		insertCategory(category);		
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Category> getByParentCategory(Category parent) {
+		return getHibernateTemplate().find("from Category c where c.parentCategory=?",parent);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Category> getCategoriesBySearchExpression(String search) {
+		search = "%"+search+"%";
+		return getHibernateTemplate().find("from Category c where c.title like ? or c.description like ?",search,search);
+	}
+
 
 
 }

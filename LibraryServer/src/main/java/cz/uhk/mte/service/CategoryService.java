@@ -16,4 +16,8 @@ public interface CategoryService {
 	public void insertCategory(Category category);
 
 	public void update(Category category);
+	
+	public List<Category> getByParentCategory(Category parent);
+
+	public List<Category> getCategoriesBySearchExpression(String search);
 }

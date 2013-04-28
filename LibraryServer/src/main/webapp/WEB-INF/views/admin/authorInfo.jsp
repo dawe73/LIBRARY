@@ -29,10 +29,6 @@
 			<th>Books in library</th>
 			<td>${fn:length(author.books)}</td>
 		</tr>
-		<tr>
-			<th>ISBN</th>
-			<td>${book.ISBN}</td>
-		</tr>
 	</table>
 		<a href="author.edit?id=${author.ID}"><input type="button" value="Edit" name="edit" /></a>
 </div>

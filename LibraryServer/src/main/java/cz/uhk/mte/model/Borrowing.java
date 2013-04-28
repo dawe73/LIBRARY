@@ -18,14 +18,14 @@ public class Borrowing implements Serializable {
 	@GeneratedValue
 	protected int ID;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne()
 	private Book book;
 	private Date dateFrom;
 	private Date dateReceived;
 	private Date dateTo;
 	private boolean isActive;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne()
 	private Student student;
 
 	public Borrowing(){
@@ -37,7 +37,7 @@ public class Borrowing implements Serializable {
 		this.dateFrom = reservation.getDateFrom();
 		this.dateTo = reservation.getDateTo();
 		this.isActive = true;
-		
+		this.student = reservation.getStudent();
 	}
 	
 	public Book getBook() {
