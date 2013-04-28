@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BooksActivity" >
+
+    <TableLayout
+        android:id="@+id/tableLayoutBooks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp" >
+
+        <TableRow
+            android:id="@+id/trBooksCategoryHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvBooksCategoryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:text="Kategorie"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/btnBooksParentCategory"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="O úroveň výš" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trBooksSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvBooksSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vyhledat: " />
+
+            <EditText
+                android:id="@+id/txtBooksSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="140dp" >
+
+                <requestFocus />
+            </EditText>
+
+            <Button
+                android:id="@+id/btnBooksSearch"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hledat" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trBooksListingHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvBooksHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:text="Knihy" />
+
+        </TableRow>
+
+        <View
+            android:layout_height="1dip"
+            android:background="#AAAAAAAA" />
+        
+        <TableRow
+            android:id="@+id/trBooksBookListing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ListView
+                android:id="@+id/lvBooks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="3" >
+            </ListView>
+
+        </TableRow>
+
+    </TableLayout>
+    
+
+</RelativeLayout>

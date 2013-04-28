@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReservationInsertActivity" >
+
+   <TextView
+       android:id="@+id/tvReservationInsertBookTitle"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:layout_marginLeft="19dp"
+       android:layout_marginTop="20dp"
+       android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/txtReservationInsertSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtReservationInsertName"
+        android:layout_below="@+id/txtReservationInsertName"
+        android:layout_marginTop="15dp"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/txtReservationInsertName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvReservationInsertBookTitle"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="21dp"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/tvReservationInsertName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtReservationInsertName"
+        android:layout_alignBottom="@+id/txtReservationInsertName"
+        android:layout_alignLeft="@+id/tvReservationInsertBookTitle"
+        android:text="Jméno:" />
+
+    <TextView
+        android:id="@+id/tvReservationInsertSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtReservationInsertSurname"
+        android:layout_alignBottom="@+id/txtReservationInsertSurname"
+        android:layout_alignLeft="@+id/tvReservationInsertName"
+        android:text="Příjmení:" />
+
+    <Button
+        android:id="@+id/btnInsert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/txtReservationInsertSurname"
+        android:layout_below="@+id/txtReservationInsertSurname"
+        android:layout_marginTop="88dp"
+        android:text="Rezervovat" />
+
+    <TextView
+        android:id="@+id/tvReservationInsertEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tvReservationInsertSurname"
+        android:layout_below="@+id/txtReservationInsertSurname"
+        android:layout_marginTop="26dp"
+        android:text="Email:" />
+
+    <EditText
+        android:id="@+id/txtReservationInsertEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvReservationInsertEmail"
+        android:layout_alignBottom="@+id/tvReservationInsertEmail"
+        android:layout_alignLeft="@+id/txtReservationInsertSurname"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/tvReservationInsertError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvReservationInsertEmail"
+        android:layout_below="@+id/btnInsert"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tvReservationInsertSurnameValid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtReservationInsertSurname"
+        android:layout_alignBottom="@+id/txtReservationInsertSurname"
+        android:layout_alignLeft="@+id/tvReservationInsertEmailValid"
+        android:text="*"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tvReservationInsertEmailValid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtReservationInsertEmail"
+        android:layout_alignBottom="@+id/txtReservationInsertEmail"
+        android:layout_toRightOf="@+id/txtReservationInsertEmail"
+        android:text="*"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tvReservationInsertNameValid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtReservationInsertName"
+        android:layout_alignBottom="@+id/txtReservationInsertName"
+        android:layout_alignLeft="@+id/tvReservationInsertSurnameValid"
+        android:text="*"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>

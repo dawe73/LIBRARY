@@ -1,0 +1,243 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookDetailActivity" >
+
+    <TableLayout
+        android:id="@+id/tableLayoutDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:padding="10dp" >
+
+        <TableRow
+            android:id="@+id/trDetailHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDetailHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detail Knihy"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trDetailTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Název"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tvDetailTitleFill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trDetailCategoryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDetailCategoryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kategorie"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tvDetailCategoryTitleFill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trDetailMainAuthors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDetailMainAuthors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Autoři"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tvDetailMainAuthorsFill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10dp" />
+
+        </TableRow>
+        
+        <TableRow
+            android:id="@+id/trDetailCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDetailCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Počet: "
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tvDetailCountFill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10dp" />
+
+        </TableRow>        
+
+        <TableRow
+            android:id="@+id/trDetailKeywords"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDetailKeywords"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Klíčová slova:"
+                android:textSize="10dp"/>
+
+            <TextView
+                android:id="@+id/tvDetailKeywordsFill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trDetailIsbn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDetailIsbn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ISBN:"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tvDetailIsbnFill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trDetailPageCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDetailPageCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Počet stran:"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tvDetailPageCountFill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trDetailPrinterInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDetailPrinterInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nakladatelství:"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tvDetailPrinterInfoFill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trDetailRelease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvDetailRelease"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vydání:"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/tvDetailReleaseFill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trDetailButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/btnChangeB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_horizontal"
+                android:text="Zpět" />
+
+            <Button
+                android:id="@+id/btnReserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_horizontal"
+                android:text="Rezervovat" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>

@@ -45,6 +45,7 @@ public class ClientController implements LibraryWebService {
 	@Override
 	@RequestMapping(value = "/getBooksByCategoryID", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody List<BookAndroid> getBooksByCategoryID(@RequestBody int categoryID) {
+		System.out.println("kategorie"+categoryID);
 		return convertor.getBooksByCategoryID(categoryID);
 	}
 
@@ -70,6 +71,7 @@ public class ClientController implements LibraryWebService {
 	@Override
 	@RequestMapping(value = "/getCategoryByID", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody CategoryAndroid getCategoryByID(@RequestBody int categoryID) {
+		System.out.println("kategorie"+categoryID);
 		return convertor.getCategoryByID(categoryID);
 	}
 

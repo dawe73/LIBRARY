@@ -1,16 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="cz.uhk.mte.LibraryClient" android:versionCode="1" android:versionName="0.0.1-SNAPSHOT">
-<uses-permission android:name="android.permission.INTERNET"/>
+    package="cz.uhk.mte.android"
+    android:versionCode="1"
+    android:versionName="0.0.1-SNAPSHOT" >
 
-  <application android:icon="@drawable/icon" android:label="@string/app_name">
-    <activity android:name=".HelloAndroidActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-  </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <activity android:name="cz.uhk.mte.android.HelloAndroidActivity" >
+        </activity>
+        <activity
+            android:name="cz.uhk.mte.android.BookDetailActivity_"
+            android:label="@string/title_activity_book_detail" >
+        </activity>
+        <activity
+            android:name="cz.uhk.mte.android.BooksActivity_"
+            android:label="@string/title_activity_books" >
+        </activity>
+        <activity
+            android:name="cz.uhk.mte.android.CategoriesActivity_"
+            android:label="@string/title_activity_categories" >
+        </activity>
+        <activity
+            android:name="cz.uhk.mte.android.ReservationsActivity_"
+            android:label="@string/title_activity_reservations" >
+        </activity>
+        <activity
+            android:name="cz.uhk.mte.android.MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>            
+        </activity>
+        <activity
+            android:name="cz.uhk.mte.android.ReservationInsertActivity_"
+            android:label="@string/title_activity_reservation_insert" >
+        </activity>
+    </application>
 
 </manifest>
-

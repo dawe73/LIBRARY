@@ -18,5 +18,13 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="ormlite-android-4.45.jar"/>
+	<classpathentry exported="true" kind="lib" path="ormlite-core-4.45.jar"/>
+	<classpathentry exported="true" kind="lib" path="androidannotations-api-2.7.1.jar"/>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
