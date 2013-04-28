@@ -8,7 +8,6 @@
 
 
 <jsp:include page="top.jsp" />
-<jsp:include page="topAuthors.jsp" />
 
 
 <div class="allContent">
