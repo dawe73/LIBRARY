@@ -20,7 +20,9 @@ import cz.uhk.mte.service.CategoryService;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ActivityGroup;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
@@ -69,6 +71,23 @@ public class BooksActivity extends FragmentActivity  {
 		categoryService = new CategoryService();
 	}
 	
+	@Override
+	public void onBackPressed() {
+		if (category == null) {
+			category = new CategoryAndroid();
+			category.setParentCategoryID(Globals.TOP_LEVEL_CATEGORY);
+			loadCategorySetFields();
+		}
+		else {
+			if (category.isTopLevelCategory()) {
+				super.onBackPressed();
+			}
+			else {
+				loadCategorySetFields();
+			}
+		}
+	}
+	
 	@AfterViews
 	void init(){
 		getCategorySetFields();
@@ -108,6 +127,11 @@ public class BooksActivity extends FragmentActivity  {
 			btnParentCategoryBrowse.setEnabled(!c.isTopLevelCategory());
 			tvCategoryTitle.setText(c.getTitle());
 		}
+		else {
+			tvCategoryTitle.setText("Chyba v aplikaci");
+			hideWait();
+			showErrorAlert();
+		}
 	}
 	
 	@Background
@@ -121,18 +145,20 @@ public class BooksActivity extends FragmentActivity  {
 	@Background
 	void loadCategorySetFields() {
 		showWait("Naèítání knih");		
-		
-		if (!category.isTopLevelCategory()) {
+
+		if (category != null && !category.isTopLevelCategory()) {
 			category = categoryService.GetCategoryByID(category.getParentCategoryID());
-			
 		}
 		refreshViews();
 	}
 	
 	private void refreshViews(){
 		setFields(category);
-		bindData(bookService.GetBooksByCategoryID(category.getID()));
-		hideWait();
+		if (category != null){
+			bindData(bookService.GetBooksByCategoryID(category.getID()));
+			hideWait();
+		}
+		
 	}
 	
 	@UiThread
@@ -145,5 +171,19 @@ public class BooksActivity extends FragmentActivity  {
 		if (wait != null) {
 			wait.dismiss();
 		}
+	}
+	
+	@UiThread
+	void showErrorAlert(){
+		AlertDialog ad = new AlertDialog.Builder(this).create();  
+		ad.setCancelable(false); // This blocks the 'BACK' button  
+		ad.setMessage(Globals.ERROR_MSG);  
+		ad.setButton("OK", new DialogInterface.OnClickListener() {  
+		    @Override  
+		    public void onClick(DialogInterface dialog, int which) {  
+		        dialog.dismiss();                      
+		    }  
+		});  
+		ad.show(); 
 	}
 }

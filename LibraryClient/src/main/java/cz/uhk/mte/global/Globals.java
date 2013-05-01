@@ -14,7 +14,8 @@ public class Globals {
 	public static final String PACKAGE_BOOK = "BookDetail";
 	public static final String PACKAGE_RESERVATION = "ReservationDetail";
 	public static final String PACKAGE_CATEGORY = "CategoryDetail";
-	public static final int TOP_LEVEL_CATEGORY = 0;
+	public static final int TOP_LEVEL_CATEGORY = 1;
 	public static Activity CURRENT_ACTIVITY = null;
-	public static final String SERVER_URI = "http://10.0.2.2:8080/mte/";
+	public static final String SERVER_URI = "http://192.168.1.179:8080/mte/";
+	public static final String ERROR_MSG = "V aplikaci nastala chyba.";
 }

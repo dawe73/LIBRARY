@@ -121,6 +121,10 @@ public class ConvertorToAndroidModelImpl implements LibraryWebService {
 		s.getReservations().add(res);
 		res.setStudent(s);
 		res.setActive(false);
+		Book b = bookService.getBookByID(reservation.getBookID());
+		int ava = b.getAvailableCount()-1;
+		b.setAvailableCount(ava);
+		bookService.update(b);
 		reservationService.insertReservation(res);
 		return reservationService.getLastInsertedID(res);
 	}

@@ -11,6 +11,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
 
 import cz.uhk.mte.entity.CategoryAndroid;
 import cz.uhk.mte.entity.ReservationAndroid;
+import cz.uhk.mte.global.Globals;
 import cz.uhk.mte.global.Helpers;
 import cz.uhk.mte.service.CategoryService;
 import cz.uhk.mte.service.ReservationService;
@@ -18,7 +19,9 @@ import cz.uhk.mte.service.ReservationService;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ActivityGroup;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -30,7 +33,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 @EActivity(R.layout.activity_categories)
-public class CategoriesActivity extends ActivityGroup {
+public class CategoriesActivity extends Activity {
 
 	public static final int LOADER_ID = 1;
 	private ProgressDialog wait; 
@@ -69,6 +72,23 @@ public class CategoriesActivity extends ActivityGroup {
 		
 		categoryService = new CategoryService();
 	}
+	
+	@Override
+	public void onBackPressed() {
+		if (category == null) {
+			category = new CategoryAndroid();
+			category.setParentCategoryID(Globals.TOP_LEVEL_CATEGORY);
+			loadCategorySetFields();
+		}
+		else {
+			if (category.isTopLevelCategory()) {
+				super.onBackPressed();
+			}
+			else {
+				loadCategorySetFields();
+			}
+		}
+	}
 
 	
 	@AfterViews
@@ -105,7 +125,7 @@ public class CategoriesActivity extends ActivityGroup {
 	void loadCategorySetFields() {
 		showWait("Naèítání kategorií");		
 		
-		if (!category.isTopLevelCategory()) {
+		if (category != null && !category.isTopLevelCategory()) {
 			category = categoryService.GetCategoryByID(category.getParentCategoryID());
 		}
 		refreshViews();
@@ -127,12 +147,20 @@ public class CategoriesActivity extends ActivityGroup {
 			btnParentCategory.setEnabled(!c.isTopLevelCategory());
 			tvCategoryTitle.setText(c.getTitle());
 		}
+		else {
+			tvCategoryTitle.setText("Chyba v aplikaci");
+			hideWait();
+			showErrorAlert();
+		}
 	}
 	
 	private void refreshViews(){
 		setFields(category);
-		bindData(categoryService.GetCategoriesByParentCategoryID(category.getID()));
-		hideWait();
+		if (category != null){
+			bindData(categoryService.GetCategoriesByParentCategoryID(category.getID()));
+			hideWait();
+		}
+		
 	}
 	
 	
@@ -155,4 +183,17 @@ public class CategoriesActivity extends ActivityGroup {
 		}
 	}
 
+	@UiThread
+	void showErrorAlert(){
+		AlertDialog ad = new AlertDialog.Builder(this).create();  
+		ad.setCancelable(false); // This blocks the 'BACK' button  
+		ad.setMessage(Globals.ERROR_MSG);  
+		ad.setButton("OK", new DialogInterface.OnClickListener() {  
+		    @Override  
+		    public void onClick(DialogInterface dialog, int which) {  
+		        dialog.dismiss();                      
+		    }  
+		});  
+		ad.show(); 
+	}
 }

@@ -5,7 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+
+import android.util.Log;
 
 import cz.uhk.mte.entity.BookAndroid;
 import cz.uhk.mte.entity.CategoryAndroid;
@@ -17,6 +20,8 @@ public class RestLibraryWebService implements ILibraryWebService {
 	
 	public RestLibraryWebService(String serverUri){
 		this.serverUri = serverUri;
+		
+		System.setProperty("http.keepAlive", "false"); 
 	}
 	
 	@Override
@@ -25,8 +30,16 @@ public class RestLibraryWebService implements ILibraryWebService {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 		String url = serverUri + "getCategoriesByParentCategoryID";
-		CategoryAndroid[] result = restTemplate.postForObject(url, parentCategoryID, CategoryAndroid[].class);
-		return new ArrayList<CategoryAndroid>(Arrays.asList(result));
+		
+		try {
+			Log.e("REST", "getCategoriesByParentCategoryID ");	
+			CategoryAndroid[] result = restTemplate.postForObject(url, parentCategoryID, CategoryAndroid[].class);
+			return new ArrayList<CategoryAndroid>(Arrays.asList(result));
+		} catch (RestClientException e) {
+			Log.e("REST", "getCategoriesByParentCategoryID " + e.getMessage());
+			e.printStackTrace();
+			return new ArrayList<CategoryAndroid>();
+		}
 	}
 
 	@Override
@@ -35,8 +48,16 @@ public class RestLibraryWebService implements ILibraryWebService {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 		String url = serverUri + "getCategoriesBySearchExpression";
-		CategoryAndroid[] result = restTemplate.postForObject(url, searchExpression, CategoryAndroid[].class);
-		return new ArrayList<CategoryAndroid>(Arrays.asList(result));
+		
+		try {
+			Log.e("REST", "getCategoriesBySearchExpression ");
+			CategoryAndroid[] result = restTemplate.postForObject(url, searchExpression, CategoryAndroid[].class);
+			return new ArrayList<CategoryAndroid>(Arrays.asList(result));
+		} catch (RestClientException e) {
+			Log.e("REST", "getCategoriesBySearchExpression " + e.getMessage());
+			e.printStackTrace();
+			return new ArrayList<CategoryAndroid>();
+		}
 	}
 
 	@Override
@@ -44,8 +65,16 @@ public class RestLibraryWebService implements ILibraryWebService {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 		String url = serverUri + "getBookByID";
-		BookAndroid result = restTemplate.postForObject(url, bookID, BookAndroid.class);
-		return result;
+		
+		try {
+			Log.e("REST", "getBookByID ");
+			BookAndroid result = restTemplate.postForObject(url, bookID, BookAndroid.class);
+			return result;
+		} catch (RestClientException e) {
+			Log.e("REST", "getBookByID " + e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -53,8 +82,15 @@ public class RestLibraryWebService implements ILibraryWebService {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 		String url = serverUri + "getBooksByCategoryID";
-		BookAndroid[] result = restTemplate.postForObject(url, categoryID, BookAndroid[].class);
-		return new ArrayList<BookAndroid>(Arrays.asList(result));
+		try {
+			Log.e("REST", "getBooksByCategoryID ");
+			BookAndroid[] result = restTemplate.postForObject(url, categoryID, BookAndroid[].class);
+			return new ArrayList<BookAndroid>(Arrays.asList(result));
+		} catch (RestClientException e) {
+			Log.e("REST", "getBooksByCategoryID " + e.getMessage());
+			e.printStackTrace();
+			return new ArrayList<BookAndroid>();
+		}
 	}
 
 	@Override
@@ -62,8 +98,16 @@ public class RestLibraryWebService implements ILibraryWebService {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 		String url = serverUri + "getBooksBySearchExpression";
-		BookAndroid[] result = restTemplate.postForObject(url, searchExpression, BookAndroid[].class);
-		return new ArrayList<BookAndroid>(Arrays.asList(result));
+		
+		try {
+			Log.e("REST", "getBooksBySearchExpression ");
+			BookAndroid[] result = restTemplate.postForObject(url, searchExpression, BookAndroid[].class);
+			return new ArrayList<BookAndroid>(Arrays.asList(result));
+		} catch (RestClientException e) {
+			Log.e("REST", "getBooksBySearchExpression " + e.getMessage());
+			e.printStackTrace();
+			return new ArrayList<BookAndroid>();
+		}
 	}
 
 
@@ -73,7 +117,15 @@ public class RestLibraryWebService implements ILibraryWebService {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 		String url = serverUri + "insertReservation";
-		int result = restTemplate.postForObject(url, reservation, int.class);
+		int result;
+		try {
+			Log.e("REST", "InsertReservation " + Integer.toString(reservation.getBookID()));
+			result = restTemplate.postForObject(url, reservation, int.class);
+		} catch (RestClientException e) {
+			Log.e("REST", "InsertReservation " + e.getMessage());
+			e.printStackTrace();
+			result = -1;
+		}
 		return result;
 		
 	}
@@ -83,8 +135,15 @@ public class RestLibraryWebService implements ILibraryWebService {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
 		String url = serverUri + "getCategoryByID";
-		CategoryAndroid result = restTemplate.postForObject(url, categoryID, CategoryAndroid.class);
-		return result;
+		try {
+			Log.e("REST", "getCategoryByID ");
+			CategoryAndroid result = restTemplate.postForObject(url, categoryID, CategoryAndroid.class);
+			return result;
+		} catch (RestClientException e) {
+			Log.e("REST", "getCategoryByID " + e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	//@Override

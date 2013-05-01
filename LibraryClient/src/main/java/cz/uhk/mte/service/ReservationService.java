@@ -25,6 +25,7 @@ public class ReservationService {
 		reservation.setSurname(surname);
 		reservation.setBookTitle(bookTitle);
 		reservation.setEmail(email);
+		reservation.setBookID(bookID);
 		
 		int reservationID = webService.InsertReservation(reservation);
 		if (reservationID > 0) {

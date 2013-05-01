@@ -17,7 +17,9 @@ import cz.uhk.mte.service.ReservationService;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ActivityGroup;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.test.UiThreadTest;
 import android.util.Log;
@@ -102,6 +104,11 @@ public class BookDetailActivity extends Activity {
 			tvRelease.setText(Helpers.GetHumanFriendlyDate(b.getRelease(), false));
 			tvCount.setText(MessageFormat.format("{0}/{1}", b.getAvailableCount(), b.getCount()));
 		}
+		else {
+			tvTitle.setText("Chyba v aplikaci");
+			hideWait();
+			showErrorAlert();
+		}
 	}
 	
 	@Background
@@ -123,5 +130,19 @@ public class BookDetailActivity extends Activity {
 		if (wait != null) {
 			wait.dismiss();
 		}
+	}
+	
+	@UiThread
+	void showErrorAlert(){
+		AlertDialog ad = new AlertDialog.Builder(this).create();  
+		ad.setCancelable(false); // This blocks the 'BACK' button  
+		ad.setMessage(Globals.ERROR_MSG);  
+		ad.setButton("OK", new DialogInterface.OnClickListener() {  
+		    @Override  
+		    public void onClick(DialogInterface dialog, int which) {  
+		        dialog.dismiss();                      
+		    }  
+		});  
+		ad.show(); 
 	}
 }

@@ -1,5 +1,6 @@
 package cz.uhk.mte.android;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 import cz.uhk.mte.entity.CategoryAndroid;
@@ -38,7 +39,7 @@ public class CategoriesAdapter extends ArrayAdapter<CategoryAndroid> {
 			TextView tvBookCount = (TextView)convertView.findViewById(R.id.tvCategoryItemBookCount);
 				
 			tvTitle.setText(dataObject.getTitle());
-			tvBookCount.setText(Integer.toString(dataObject.getBooksCount()));
+			tvBookCount.setText(MessageFormat.format(tvBookCount.getText().toString(), dataObject.getBooksCount()));
 				
 			Button btnShowBooks = (Button) convertView.findViewById(R.id.btnCategoryItemBooks);
 			

@@ -32,8 +32,15 @@ public class CategoryAndroid implements Serializable, ILibraryEntity {
 		this.description = c.getDescription();
 		this.level = c.getLevel();
 		this.booksCount=c.getBooks().size();
-		this.parentCategoryTitle = c.getParentCategory().getTitle();
-		this.parentCategoryID = c.getParentCategory().getID();
+		if (c.getParentCategory() != null) {
+			this.parentCategoryTitle = c.getParentCategory().getTitle();
+			this.parentCategoryID = c.getParentCategory().getID();
+		}
+		else {
+			this.parentCategoryTitle = "";
+			this.parentCategoryID = 0;
+			this.isTopLevelCategory = true;
+		}
 		this.title = c.getTitle();
 	}
 

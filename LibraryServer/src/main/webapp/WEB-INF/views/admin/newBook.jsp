@@ -39,7 +39,7 @@
 		<c:if test="${numberOfAuthors==0 }"><c:set var="endCycle"  value="0"/></c:if>
 		<c:forEach var="num" begin="0" end="${endCycle}">
 			<tr>
-				<td>Author ${num}</td>
+				<td>Author ${num+1}</td>
 				<td><select name="authorsID[]">
 						<c:forEach items="${authors}" var="a">
 						<option

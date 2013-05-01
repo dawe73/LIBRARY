@@ -45,7 +45,7 @@ public class LibraryOnClickListener implements OnClickListener {
 	}
 	
 	private void startTabActivity(){
-		ActivityGroup ag = (ActivityGroup) ctx;
+		Activity ag = (Activity) ctx;
 		
 		if (tabType == LibraryTabType.BooksTab) {
 			MainActivity mainActivity = (MainActivity) ag.getParent();
